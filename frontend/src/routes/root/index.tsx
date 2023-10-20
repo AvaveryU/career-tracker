@@ -1,5 +1,8 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+
 function Root() {
+  const location = useLocation();
+
   return (
     <div>
       <h1>Шапка</h1>
