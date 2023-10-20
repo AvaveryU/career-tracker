@@ -26,3 +26,9 @@ VACANCY_STATUS_CHOICES = [
     ("open", "Открыта"),
     ("closed", "Закрыта"),
 ]
+
+# Выбор грейда
+GRADE_CHOICES = [
+    ("junior", "Junior"),
+    ("middle", "Middle"),
+]
