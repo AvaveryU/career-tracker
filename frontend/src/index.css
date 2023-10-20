@@ -1,7 +1,12 @@
-@import url("./fonts/fonts.css");
+@import url('./fonts/fonts.css');
 
 :root {
-  font-family: YS Display, YS Text, Helvetica, Arial, sans-serif;
+  font-family:
+    YS Display,
+    YS Text,
+    Helvetica,
+    Arial,
+    sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
