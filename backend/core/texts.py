@@ -40,3 +40,13 @@ EDUCATION_LEVELS = [
     ("university", "Высшее образование"),
     ("postgrad", "Ученая степень"),
 ]
+
+#
+POSITION_LIST = [
+    ("frontend_dev", "Фронтенд-разработчик"),
+    ("fullstack_dev", "Фулстек-разработчик"),
+    ("python_dev", "Python-разработчик"),
+    ("qa_engineer", "Инженер по тестированию"),
+    ("java_dev", "Java-разработчик"),
+    ("data_scientist", "Специалист по data-science"),
+]
