@@ -90,7 +90,7 @@ class ContactInfo(models.Model):
     )
 
     def __str__(self):
-        return self.email
+        return self.alternate_email
 
 
 class Skill(models.Model):
@@ -148,6 +148,35 @@ class Position(models.Model):
         verbose_name="Должность",
     )
 
+    def __str__(self):
+        return self.name
+
+
+class StudentPosition(models.Model):
+    """Промежуточная модель для связи между студентом и позицией"""
+
+    student = models.ForeignKey(
+        "StudentUser",
+        on_delete=models.CASCADE,
+        related_name="student_positions",
+        verbose_name="Студент",
+    )
+    position = models.ForeignKey(
+        Position,
+        on_delete=models.CASCADE,
+        verbose_name="Позиция",
+    )
+    academic_status = models.ForeignKey(
+        AcademicStatus,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+        verbose_name="Учебный статус",
+    )
+
+    def __str__(self):
+        return f"{self.student} - {self.position}"
+
 
 class StudentUser(models.Model):
     """
@@ -171,8 +200,6 @@ class StudentUser(models.Model):
         null=True,
         verbose_name="Уровень образования",
     )
-
-    # Наследуемые поля
     contact_info = models.OneToOneField(
         ContactInfo,
         on_delete=models.CASCADE,
@@ -198,20 +225,18 @@ class StudentUser(models.Model):
         null=True,
         verbose_name="Статус трудоустройства",
     )
-
-    # Дополнительные поля
     city = models.CharField(
         max_length=BASIC_LEN,
         blank=True,
         null=True,
         verbose_name="Город",
     )
-    specialization = models.CharField(
-        max_length=BASIC_LEN,
-        blank=True,
-        null=True,
-        verbose_name="Специализация",
-    )
+    # specialization = models.CharField(
+    #     max_length=BASIC_LEN,
+    #     blank=True,
+    #     null=True,
+    #     verbose_name="Специализация",
+    # )
     work_experience = models.CharField(
         max_length=BASIC_LEN,
         blank=True,
@@ -225,10 +250,31 @@ class StudentUser(models.Model):
         null=True,
         verbose_name="Грэйд",
     )
-    positions = models.ManyToManyField(
+    training_status = models.ManyToManyField(
         Position,
+        through=StudentPosition,
         verbose_name="Предпочтительные должности",
         blank=True,
+    )
+
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name="О себе",
+    )
+
+    photo = models.ImageField(
+        upload_to="student_photos/",
+        blank=True,
+        null=True,
+        verbose_name="Фото",
+    )
+
+    resume = models.FileField(
+        upload_to="student_resumes/",
+        blank=True,
+        null=True,
+        verbose_name="Резюме",
     )
 
     REQUIRED_FIELDS = [
