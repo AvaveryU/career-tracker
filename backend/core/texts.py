@@ -1,3 +1,10 @@
+# Общие константы
+NAME_LEN = 150
+PHONE_LEN = 20
+MAIL_LEN = 254
+TELEGRAM_LEN = 100
+BASIC_LEN = 100
+
 # Выборы для учебного статуса студентов
 ACADEMIC_STATUS_CHOICES = [
     ("passing", "Проходит обучение"),
