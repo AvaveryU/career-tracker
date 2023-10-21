@@ -7,6 +7,11 @@ from core.texts import (
     EMPLOYMENT_STATUS_CHOICES,
     GRADE_CHOICES,
     POSITION_LIST,
+    NAME_LEN,
+    PHONE_LEN,
+    MAIL_LEN,
+    TELEGRAM_LEN,
+    BASIC_LEN,
 )
 from .validators import validate_not_me, UsernameValidator
 
@@ -14,13 +19,13 @@ from .validators import validate_not_me, UsernameValidator
 class User(AbstractUser):
     email = models.EmailField(
         "Электронная почта",
-        max_length=254,
+        max_length=MAIL_LEN,
         unique=True,
     )
 
     username = models.CharField(
         "Имя пользователя",
-        max_length=150,
+        max_length=NAME_LEN,
         unique=True,
         db_index=True,
         validators=[
@@ -34,12 +39,12 @@ class User(AbstractUser):
 
     first_name = models.CharField(
         "Имя",
-        max_length=150,
+        max_length=NAME_LEN,
     )
 
     last_name = models.CharField(
         "Фамилия",
-        max_length=150,
+        max_length=NAME_LEN,
     )
 
     USERNAME_FIELD = "email"
@@ -68,17 +73,17 @@ class ContactInfo(models.Model):
     """
 
     phone_number = models.CharField(
-        max_length=20,
+        max_length=PHONE_LEN,
         unique=True,
         verbose_name="Номер телефона",
     )
-    email = models.EmailField(
-        max_length=100,
+    alternate_email = models.EmailField(
+        max_length=MAIL_LEN,
         unique=True,
-        verbose_name="Адрес электронной почты",
+        verbose_name="Дополнительный адрес электронной почты",
     )
     telegram_login = models.CharField(
-        max_length=100,
+        max_length=TELEGRAM_LEN,
         blank=True,
         null=True,
         verbose_name="Логин в Telegram",
@@ -94,7 +99,7 @@ class Skill(models.Model):
     """
 
     name = models.CharField(
-        max_length=100,
+        max_length=BASIC_LEN,
         verbose_name="Навык",
     )
 
@@ -108,7 +113,7 @@ class AcademicStatus(models.Model):
     """
 
     name = models.CharField(
-        max_length=20,
+        max_length=NAME_LEN,
         choices=ACADEMIC_STATUS_CHOICES,
         verbose_name="Учебный статус",
     )
@@ -123,7 +128,7 @@ class EmploymentStatus(models.Model):
     """
 
     name = models.CharField(
-        max_length=20,
+        max_length=BASIC_LEN,
         choices=EMPLOYMENT_STATUS_CHOICES,
         verbose_name="Статус трудоустройства",
     )
@@ -138,7 +143,7 @@ class Position(models.Model):
     """
 
     name = models.CharField(
-        max_length=150,
+        max_length=BASIC_LEN,
         choices=POSITION_LIST,
         verbose_name="Должность",
     )
@@ -196,25 +201,25 @@ class StudentUser(models.Model):
 
     # Дополнительные поля
     city = models.CharField(
-        max_length=100,
+        max_length=BASIC_LEN,
         blank=True,
         null=True,
         verbose_name="Город",
     )
     specialization = models.CharField(
-        max_length=100,
+        max_length=BASIC_LEN,
         blank=True,
         null=True,
         verbose_name="Специализация",
     )
     work_experience = models.CharField(
-        max_length=100,
+        max_length=BASIC_LEN,
         blank=True,
         null=True,
         verbose_name="Опыт работы",
     )
     grade = models.CharField(
-        max_length=20,
+        max_length=BASIC_LEN,
         choices=GRADE_CHOICES,
         blank=True,
         null=True,
