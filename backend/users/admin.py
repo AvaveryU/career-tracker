@@ -37,8 +37,8 @@ class StudentUserAdmin(admin.ModelAdmin):
 
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin):
-    list_display = ("email", "phone_number", "telegram_login")
-    search_fields = ("email", "phone_number")
+    list_display = ("alternate_email", "phone_number", "telegram_login")
+    search_fields = ("alternate_email", "phone_number")
 
 
 @admin.register(Skill)
