@@ -3,8 +3,10 @@ from django.db import models
 
 from core.texts import (
     ACADEMIC_STATUS_CHOICES,
+    EDUCATION_LEVELS,
     EMPLOYMENT_STATUS_CHOICES,
     GRADE_CHOICES,
+    POSITION_LIST,
 )
 from .validators import validate_not_me, UsernameValidator
 
@@ -147,6 +149,7 @@ class StudentUser(models.Model):
     )
     education_level = models.CharField(
         max_length=100,
+        choices=EDUCATION_LEVELS,
         blank=True,
         null=True,
         verbose_name="Уровень образования",
@@ -204,6 +207,14 @@ class StudentUser(models.Model):
         blank=True,
         null=True,
         verbose_name="Грэйд",
+    )
+    positions = models.CharField(
+        max_length=150,
+        choices=POSITION_LIST,
+        blank=False,
+        null=False,
+        many=True,
+        verbose_name="Предпочтительные должности",
     )
 
     REQUIRED_FIELDS = [

@@ -32,3 +32,11 @@ GRADE_CHOICES = [
     ("junior", "Junior"),
     ("middle", "Middle"),
 ]
+
+# Уровень образования
+EDUCATION_LEVELS = [
+    ("school", "Среднее образование"),
+    ("college", "Средне-специальное образование"),
+    ("university", "Высшее образование"),
+    ("postgrad", "Ученая степень"),
+]
