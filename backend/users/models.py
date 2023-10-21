@@ -132,6 +132,18 @@ class EmploymentStatus(models.Model):
         return self.name
 
 
+class Position(models.Model):
+    """
+    Модель выбора ожидаемой должности.
+    """
+
+    name = models.CharField(
+        max_length=150,
+        choices=POSITION_LIST,
+        verbose_name="Должность",
+    )
+
+
 class StudentUser(models.Model):
     """
     Расширенная модель пользователя для студента.
@@ -208,13 +220,10 @@ class StudentUser(models.Model):
         null=True,
         verbose_name="Грэйд",
     )
-    positions = models.CharField(
-        max_length=150,
-        choices=POSITION_LIST,
-        blank=False,
-        null=False,
-        many=True,
+    positions = models.ManyToManyField(
+        Position,
         verbose_name="Предпочтительные должности",
+        blank=True,
     )
 
     REQUIRED_FIELDS = [
