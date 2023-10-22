@@ -2,12 +2,12 @@
 
 :root {
   /* Основные цвета */
-  --disableed-color: #DDE0E4;
-  --primary-white-color: #FFFFFF;
+  --disabled-color: #DDE0E4;
+  --white-color: #FFFFFF;
   --primary-blue-color: #5A9BFF;
   --active-blue-color: #1D6BF3;
-  --additional-light-grey-color: #F9FAFB;
-  --active-blue-bg-color: #F1F6FF;
+  --light-grey-color: #F9FAFB;
+  --blue-bg-color: #F1F6FF;
   --error-color: #FF0200;
 
   /* Цвет текста */
@@ -29,4 +29,6 @@
   --brown-color: #A99175;
   --brown-color-rgba-opacity-26: rgba(169, 145, 117, 0.26);
   --light-blue-color: #ACCCFF;
+  --disabled-buuton: var(--light-grey-color);
+  --selected-element: var(--blue-bg-color);
 }
