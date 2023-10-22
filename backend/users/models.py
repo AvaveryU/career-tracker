@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 from core.texts import (
     ACADEMIC_STATUS_CHOICES,
     EDUCATION_LEVELS,
@@ -72,7 +74,7 @@ class ContactInfo(models.Model):
     Модель для контактной информации.
     """
 
-    phone_number = models.CharField(
+    phone_number = PhoneNumberField(
         max_length=PHONE_LEN,
         unique=True,
         verbose_name="Номер телефона",
@@ -119,7 +121,7 @@ class AcademicStatus(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return dict(ACADEMIC_STATUS_CHOICES).get(self.name, self.name)
 
 
 class EmploymentStatus(models.Model):
@@ -134,7 +136,7 @@ class EmploymentStatus(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return dict(EMPLOYMENT_STATUS_CHOICES).get(self.name, self.name)
 
 
 class Position(models.Model):
@@ -149,7 +151,7 @@ class Position(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return dict(POSITION_LIST).get(self.name, self.name)
 
 
 class StudentPosition(models.Model):

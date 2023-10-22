@@ -1,9 +1,5 @@
 from rest_framework import serializers
-from users.models import (
-    StudentUser,
-    ContactInfo,
-    StudentPosition,
-)
+from users.models import StudentUser, ContactInfo, StudentPosition, Skill
 from drf_extra_fields.fields import Base64ImageField
 
 
@@ -44,6 +40,15 @@ class ContactInfoSerializer(serializers.ModelSerializer):
         ]
 
 
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = [
+            "id",
+            "name",
+        ]
+
+
 class StudentUserSerializer(serializers.ModelSerializer):
     """
     Сериализатор для модели StudentUser, предоставляет данные о студентах.
@@ -59,6 +64,9 @@ class StudentUserSerializer(serializers.ModelSerializer):
     training_status = StudentPositionSerializer(
         many=True, source="student_positions"
     )
+    academic_status = serializers.StringRelatedField()
+    employment_status = serializers.StringRelatedField()
+    skills = SkillSerializer(many=True)
 
     class Meta:
         model = StudentUser

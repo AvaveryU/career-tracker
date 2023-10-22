@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "djoser",
+    "drf_yasg",
     "rest_framework",
     "rest_framework.authtoken",
     "api",
     "users",
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
@@ -60,10 +62,12 @@ AUTH_USER_MODEL = "users.User"
 
 ROOT_URLCONF = "career_tracker.urls"
 
+TEMPLATES_DIR = "templates"
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATES_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -127,6 +131,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "collected_static"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "/media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -152,6 +160,20 @@ DJOSER = {
         "token_create": ["rest_framework.permissions.AllowAny"],
         "token_destroy": ["rest_framework.permissions.IsAuthenticated"],
     },
+    # "SERIALIZERS": {
+    #     "user": "api.serializers.test",
+    # },
 }
 
 PASSWORD_RESET_TIMEOUT = 60 * 60
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}

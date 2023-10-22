@@ -1,0 +1,774 @@
+swagger: '2.0'
+info:
+  title: Career-Tracker
+  description: Описание
+  version: v1
+host: 127.0.0.1:8000
+schemes:
+  - http
+basePath: /api/v1
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /auth/users/:
+    get:
+      operationId: auth_users_list
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          description: A page number within the paginated result set.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/User'
+      tags:
+        - auth
+    post:
+      operationId: auth_users_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserCreatePasswordRetype'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserCreatePasswordRetype'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/activation/:
+    post:
+      operationId: auth_users_activation
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Activation'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Activation'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/me/:
+    get:
+      operationId: auth_users_me_read
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          description: A page number within the paginated result set.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/User'
+      tags:
+        - auth
+    put:
+      operationId: auth_users_me_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - auth
+    patch:
+      operationId: auth_users_me_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - auth
+    delete:
+      operationId: auth_users_me_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - auth
+    parameters: []
+  /auth/users/resend_activation/:
+    post:
+      operationId: auth_users_resend_activation
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/reset_email/:
+    post:
+      operationId: auth_users_reset_username
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/reset_email_confirm/:
+    post:
+      operationId: auth_users_reset_username_confirm
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UsernameResetConfirm'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/UsernameResetConfirm'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/reset_password/:
+    post:
+      operationId: auth_users_reset_password
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SendEmailReset'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/reset_password_confirm/:
+    post:
+      operationId: auth_users_reset_password_confirm
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PasswordResetConfirm'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/PasswordResetConfirm'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/set_email/:
+    post:
+      operationId: auth_users_set_username
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SetUsername'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SetUsername'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/set_password/:
+    post:
+      operationId: auth_users_set_password
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SetPasswordRetype'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/SetPasswordRetype'
+      tags:
+        - auth
+    parameters: []
+  /auth/users/{id}/:
+    get:
+      operationId: auth_users_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - auth
+    put:
+      operationId: auth_users_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - auth
+    patch:
+      operationId: auth_users_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/User'
+      tags:
+        - auth
+    delete:
+      operationId: auth_users_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - auth
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this Пользователь.
+        required: true
+        type: integer
+  /test/:
+    get:
+      operationId: test_list
+      description: ''
+      parameters:
+        - name: page
+          in: query
+          description: A page number within the paginated result set.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/StudentUser'
+      tags:
+        - test
+    post:
+      operationId: test_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StudentUser'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/StudentUser'
+      tags:
+        - test
+    parameters: []
+  /test/{id}/:
+    get:
+      operationId: test_read
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StudentUser'
+      tags:
+        - test
+    put:
+      operationId: test_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StudentUser'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StudentUser'
+      tags:
+        - test
+    patch:
+      operationId: test_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/StudentUser'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/StudentUser'
+      tags:
+        - test
+    delete:
+      operationId: test_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - test
+    parameters:
+      - name: id
+        in: path
+        description: A unique integer value identifying this student user.
+        required: true
+        type: integer
+definitions:
+  User:
+    required:
+      - username
+      - first_name
+      - last_name
+    type: object
+    properties:
+      username:
+        title: Имя пользователя
+        type: string
+        maxLength: 150
+        minLength: 1
+      first_name:
+        title: Имя
+        type: string
+        maxLength: 150
+        minLength: 1
+      last_name:
+        title: Фамилия
+        type: string
+        maxLength: 150
+        minLength: 1
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      email:
+        title: Электронная почта
+        type: string
+        format: email
+        readOnly: true
+        minLength: 1
+  UserCreatePasswordRetype:
+    required:
+      - username
+      - first_name
+      - last_name
+      - email
+      - password
+      - re_password
+    type: object
+    properties:
+      username:
+        title: Имя пользователя
+        type: string
+        maxLength: 150
+        minLength: 1
+      first_name:
+        title: Имя
+        type: string
+        maxLength: 150
+        minLength: 1
+      last_name:
+        title: Фамилия
+        type: string
+        maxLength: 150
+        minLength: 1
+      email:
+        title: Электронная почта
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      password:
+        title: Password
+        type: string
+        minLength: 1
+      re_password:
+        title: Re password
+        type: string
+        minLength: 1
+  Activation:
+    required:
+      - uid
+      - token
+    type: object
+    properties:
+      uid:
+        title: Uid
+        type: string
+        minLength: 1
+      token:
+        title: Token
+        type: string
+        minLength: 1
+  SendEmailReset:
+    required:
+      - email
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        minLength: 1
+  UsernameResetConfirm:
+    required:
+      - new_email
+    type: object
+    properties:
+      new_email:
+        title: Электронная почта
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+  PasswordResetConfirm:
+    required:
+      - uid
+      - token
+      - new_password
+    type: object
+    properties:
+      uid:
+        title: Uid
+        type: string
+        minLength: 1
+      token:
+        title: Token
+        type: string
+        minLength: 1
+      new_password:
+        title: New password
+        type: string
+        minLength: 1
+  SetUsername:
+    required:
+      - current_password
+      - new_email
+    type: object
+    properties:
+      current_password:
+        title: Current password
+        type: string
+        minLength: 1
+      new_email:
+        title: Электронная почта
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+  SetPasswordRetype:
+    required:
+      - new_password
+      - re_new_password
+      - current_password
+    type: object
+    properties:
+      new_password:
+        title: New password
+        type: string
+        minLength: 1
+      re_new_password:
+        title: Re new password
+        type: string
+        minLength: 1
+      current_password:
+        title: Current password
+        type: string
+        minLength: 1
+  StudentPosition:
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      position_name:
+        title: Position name
+        type: string
+        readOnly: true
+      academic_status_name:
+        title: Academic status name
+        type: string
+        readOnly: true
+  ContactInfo:
+    required:
+      - phone_number
+      - alternate_email
+    type: object
+    properties:
+      phone_number:
+        title: Номер телефона
+        type: string
+        maxLength: 20
+        minLength: 1
+      alternate_email:
+        title: Дополнительный адрес электронной почты
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      telegram_login:
+        title: Логин в Telegram
+        type: string
+        maxLength: 100
+        x-nullable: true
+  Skill:
+    required:
+      - name
+    type: object
+    properties:
+      id:
+        title: ID
+        type: integer
+        readOnly: true
+      name:
+        title: Навык
+        type: string
+        maxLength: 100
+        minLength: 1
+  StudentUser:
+    required:
+      - user_id
+      - username
+      - first_name
+      - last_name
+      - email
+      - training_status
+      - contact_info
+      - skills
+    type: object
+    properties:
+      user_id:
+        title: User id
+        type: integer
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        minLength: 1
+      last_name:
+        title: Last name
+        type: string
+        minLength: 1
+      email:
+        title: Email
+        type: string
+        format: email
+        minLength: 1
+      photo:
+        title: Photo
+        type: string
+        readOnly: true
+        format: uri
+      training_status:
+        type: array
+        items:
+          $ref: '#/definitions/StudentPosition'
+      date_of_birth:
+        title: Дата рождения
+        type: string
+        format: date
+        x-nullable: true
+      education_level:
+        title: Уровень образования
+        type: string
+        enum:
+          - school
+          - college
+          - university
+          - postgrad
+        x-nullable: true
+      city:
+        title: Город
+        type: string
+        maxLength: 100
+        x-nullable: true
+      work_experience:
+        title: Опыт работы
+        type: string
+        maxLength: 100
+        x-nullable: true
+      grade:
+        title: Грэйд
+        type: string
+        enum:
+          - junior
+          - middle
+        x-nullable: true
+      description:
+        title: О себе
+        type: string
+        x-nullable: true
+      resume:
+        title: Резюме
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+      contact_info:
+        $ref: '#/definitions/ContactInfo'
+      academic_status:
+        title: Academic status
+        type: string
+        readOnly: true
+      employment_status:
+        title: Employment status
+        type: string
+        readOnly: true
+      skills:
+        type: array
+        items:
+          $ref: '#/definitions/Skill'
