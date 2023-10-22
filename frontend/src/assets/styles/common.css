@@ -4,7 +4,8 @@
   /* Основные цвета */
   --disableed-color: #DDE0E4;
   --primary-white-color: #FFFFFF;
-  --primary-blue-color: #1D6BF3;
+  --primary-blue-color: #5A9BFF;
+  --active-blue-color: #1D6BF3;
   --additional-light-grey-color: #F9FAFB;
   --active-blue-bg-color: #F1F6FF;
   --error-color: #FF0200;
@@ -13,7 +14,6 @@
   --primary-text-color: #1A1B22;
   --text-grey-color: #797981;
   --text-light-grey-color: #B5B5B7;
-  --text-button-color: #5A9BFF;
 
   /* Дополнительные цвета */
   --green-color: #87CC9E;
