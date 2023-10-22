@@ -9,7 +9,6 @@ Inter Semi Bold
 YS Display Regular
 Montserrat Medium
  */
-
 @font-face {
   src: 
   /* Искать сначала в локальном хранилище, если нет, то загружать через url */
@@ -81,24 +80,6 @@ Montserrat Medium
    url('./Inter-SemiBold.woff') format('woff'),
    url('./Inter-SemiBold.woff2') format('woff2');
   font-family: 'Inter';
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  src: local('Montserrat-Medium'),
-   url('./Montserrat-Medium.ttf') format('opentype'),
-   url('./Montserrat-Medium.woff') format('woff'),
-   url('./Montserrat-Medium.woff2') format('woff2');
-  font-family: 'Montserrat';
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  src: local('Montserrat-Medium'),
-   url('./Montserrat-Medium.ttf') format('opentype'),
-   url('./Montserrat-Medium.woff') format('woff'),
-   url('./Montserrat-Medium.woff2') format('woff2');
-  font-family: 'Montserrat';
   font-weight: 500;
   font-display: swap;
 }
