@@ -1,0 +1,39 @@
+/* TODO: добавить шрифты. 7 типов */
+/*  Хорошей практикой считается подключать разные форматы. Лучше конвертировать и подключить все три: otf, woff/woff2  */
+/* 
+YS Text Regular
+YS Text Medium
+YS Display Medium
+Roboto Regular
+Inter Semi Bold
+YS Display Regular
+Montserrat Medium
+ */
+
+@font-face {
+  src: 
+  /* Искать сначала в локальном хранилище, если нет, то загружать через url */
+    local('YS_Display-Regular'),
+    url('./YS_Display-Regular.ttf') format('opentype');
+  font-family: 'YS Display';
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  src: url('./YS_Display-Medium.ttf') format('opentype');
+  font-family: 'YS Display';
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  src: url('./YS_Text-Regular.ttf') format('opentype');
+  font-family: 'YS Text';
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  src: url('./YS_Text-Medium.ttf') format('opentype');
+  font-family: 'YS Text';
+  font-weight: 500;
+  font-display: swap;
+}
