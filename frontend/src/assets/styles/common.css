@@ -2,33 +2,33 @@
 
 :root {
   /* Основные цвета */
-  --primary-color: #9384b7;
-  --primary-color-rgba: rgba(143, 129, 177, 0.2);
+  --disabled-color: #DDE0E4;
+  --white-color: #FFFFFF;
+  --primary-blue-color: #5A9BFF;
+  --active-blue-color: #1D6BF3;
+  --light-grey-color: #F9FAFB;
+  --blue-bg-color: #F1F6FF;
+  --error-color: #FF0200;
 
   /* Цвет текста */
-  --primary-text-color: #0f0f0f;
-  --primary-text-color-opacity-7: rgba(15, 15, 15, 0.7);
-  --text-grey-color: #9c9c9c;
-  --text-white-color: #fff;
-  --text-light-grey-color: #3c3c3c;
-  --text-button-color: var(--primary-color);
+  --primary-text-color: #1A1B22;
+  --text-grey-color: #797981;
+  --text-light-grey-color: #B5B5B7;
 
   /* Дополнительные цвета */
-  --background-white-color: #fff;
-  --background-white-color-opacity-7: rgba(255, 255, 255, 0.7);
-  --shadow-gray-rgba: rgba(147, 132, 183, 0.3);
-
-  --link-color: var(--primary-purple-color);
-  --reverse-color: var(--background-white-color);
-
-  --grey-search-color: #bebebe;
-  --grey-light-color: #f8f8f8;
-  --grey-color: #d4d4d4;
-
-  --error-color: #d80000;
-  --success-color: #03a600;
-
-  /* Ширина контента на разных разрешениях экрана */
-  --content-width-for-screen-1440: 1240px;
-  --content-width-for-screen-1280: 1120px;
+  --green-color: #87CC9E;
+  --purple-color: #7F67D2;
+  --orange-color: #FFCE92;
+  --light-green-color: #C2E5CE;
+  --light-purple-color: #CCC2ED;
+  --light-orange-color: #FFE1BD;
+  --rose-color: #FFDDE5;
+  --yellow-color: #FFF9D3;
+  --pink-color: #FFBFFD;
+  --pink-color-rgba-opacity-87:rgba(255, 191, 253, 0.87);
+  --brown-color: #A99175;
+  --brown-color-rgba-opacity-26: rgba(169, 145, 117, 0.26);
+  --light-blue-color: #ACCCFF;
+  --disabled-buuton: var(--light-grey-color);
+  --selected-element: var(--blue-bg-color);
 }
